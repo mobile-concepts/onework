@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # OneWork (onework)
 
 An office managing app
@@ -24,3 +25,6 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+=======
+# onework
+>>>>>>> c38f794eb6ae2ebe1b9e2b84f964f3ea81759197
