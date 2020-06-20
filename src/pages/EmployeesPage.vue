@@ -1,7 +1,14 @@
 <template>
   <q-card class="q-ma-md">
-    <q-card-section>
-      <div class="text-h6">Employees</div>
+    <q-card-section horizontal>
+      <q-card-section>
+        <div class="text-h6">Employees</div>
+      </q-card-section>
+      <q-card-section>
+        <q-btn round color="primary">
+          <q-icon name="add" size="xs" />
+        </q-btn>
+      </q-card-section>
     </q-card-section>
     <q-separator />
     <q-card-section>
@@ -23,14 +30,9 @@
             </q-item-section>
             <q-item-section side>
               <div class="row">
-                <q-btn
-                  title="Edit employee"
-                  flat
-                  round
-                  color="primary"
-                  icon="edit"
-                  size="md"
-                />
+                <q-btn flat round color="primary" icon="edit" size="md">
+                  <q-tooltip>Edit employee</q-tooltip>
+                </q-btn>
                 <q-btn
                   title="Delete employee"
                   flat
@@ -38,7 +40,9 @@
                   color="primary"
                   icon="delete"
                   size="md"
-                />
+                >
+                  <q-tooltip>Delete employee</q-tooltip>
+                </q-btn>
               </div>
             </q-item-section>
           </q-item>
@@ -56,14 +60,20 @@
     -->
     </q-card-section>
     <q-separator />
-    <q-card-section class="q-pa-sm">
-      <q-pagination
-        v-model="currentPageNo"
-        color="primary"
-        :max="10"
-        :max-pages="6"
-        :boundary-numbers="true"
-      />
+    <q-card-section class="q-pa-sm vertical-middle" horizontal>
+      <q-card-section horizontal>
+        <q-pagination
+          v-model="currentPageNo"
+          color="primary"
+          :max="10"
+          :max-pages="6"
+          :boundary-numbers="true"
+        />
+      </q-card-section>
+      <q-space />
+      <q-card-section horizontal>
+        26-50 of 1.245
+      </q-card-section>
     </q-card-section>
   </q-card>
 </template>
