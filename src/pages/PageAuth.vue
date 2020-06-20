@@ -5,7 +5,7 @@
         <q-icon name="people_alt" size="md" />
         <q-toolbar-title>
           OneWork &middot;
-          <span>Sign in</span>
+          <b>Sign in</b>
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -41,17 +41,14 @@
                 </q-banner>
                 <q-input outlined v-model="login.username" label="Username*" />
                 <div class="text-right">
-                  <a
-                    class="text-primary link"
-                    @click="setActiveTab('register')"
-                  >
+                  <a class="text-primary link" @click="showNoAccountAlert()">
                     No account yet?
                   </a>
                 </div>
                 <q-input
                   outlined
                   v-model="login.organization"
-                  label="Organization"
+                  label="Organization*"
                 />
                 <div class="text-right">
                   <a
@@ -65,7 +62,7 @@
                   type="password"
                   outlined
                   v-model="password"
-                  label="Password"
+                  label="Password*"
                 />
                 <div class="text-right">
                   <a
@@ -93,8 +90,12 @@
                   If forgotten your password then reset it by following the
                   instructions that will be sent to you by email.
                 </q-banner>
-                <q-input outlined v-model="username" label="Username" />
-                <q-input outlined v-model="organization" label="Organization" />
+                <q-input outlined v-model="username" label="Username*" />
+                <q-input
+                  outlined
+                  v-model="organization"
+                  label="Organization*"
+                />
                 <div class="row">
                   <q-space />
                   <q-btn color="primary" label="Reset password" />
@@ -120,77 +121,74 @@
                 <q-input
                   outlined
                   v-model="register.organization.id"
-                  label="ID"
+                  label="ID*"
                 />
                 <q-input
                   outlined
                   v-model="register.organization.name"
-                  label="Organization name"
+                  label="Organization name*"
                 />
                 <q-input
                   outlined
                   v-model="register.organization.street"
-                  label="Street"
+                  label="Street*"
                 />
                 <div class="row">
                   <q-input
                     outlined
                     v-model="register.zip"
-                    label="Zip"
+                    label="Zip*"
                     class="q-mr"
                   />
                   <q-input
                     outlined
                     v-model="register.organization.city"
-                    label="City"
+                    label="City*"
                   />
                 </div>
                 <q-select
                   outlined
                   v-model="register.organization.country"
                   :options="availableCountries"
-                  label="Country"
-                />
-                <q-input
-                  type="password"
-                  outlined
-                  v-model="password"
-                  label="Password"
+                  label="Country*"
                 />
 
                 <div class="text-h7">Admin user</div>
                 <q-input
                   outlined
                   v-model="register.adminUser.username"
-                  label="Username"
+                  label="Username*"
                 />
                 <q-input
                   outlined
                   v-model="register.adminUser.firstName"
-                  label="First name"
+                  label="First name*"
                 />
                 <q-input
                   outlined
                   v-model="register.adminUser.lastName"
-                  label="Last name"
+                  label="Last name*"
                 />
                 <q-input
                   outlined
                   v-model="register.adminUser.lastName"
-                  label="E-mail"
+                  label="E-mail*"
                 />
                 <q-input
                   outlined
                   v-model="register.adminUser.password"
-                  label="Password"
+                  label="Password*"
                 />
                 <q-input
                   outlined
                   v-model="register.adminUser.password2"
-                  label="Repeat password"
+                  label="Repeat password*"
                 />
                 <q-checkbox v-model="register.termsAndConditions.accept">
-                  Accept <a class="text-primary link">Terms and Conditions</a>
+                  Accept
+                  <a @click.stop="void 0" class="text-primary link"
+                    >Terms and Conditions</a
+                  >
                 </q-checkbox>
 
                 <div class="row">
@@ -201,16 +199,41 @@
             </q-tab-panels>
           </q-card>
         </div>
+
+        <q-dialog v-model="alert.visible">
+          <q-card>
+            <q-card-section>
+              <div class="text-h6">{{ alert.title }}</div>
+            </q-card-section>
+
+            <q-card-section class="q-pt-none">
+              {{ alert.text }}
+            </q-card-section>
+
+            <q-card-actions align="right">
+              <q-btn flat label="OK" color="primary" v-close-popup />
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
       </q-page>
     </q-page-container>
   </q-layout>
 </template>
 
 <script lang="ts">
-export default {
+import Vue from 'vue'
+
+export default new Vue({
+  name: 'PageAuth',
+
   data() {
     return {
       activeTab: 'login',
+      alert: {
+        visible: false,
+        title: 'Some alert',
+        text: 'Some text'
+      },
       login: {
         username: '',
         organiazation: '',
@@ -252,9 +275,22 @@ export default {
   methods: {
     setActiveTab(name: string) {
       this.activeTab = name
+    },
+
+    showAlert(title: string, text: string) {
+      this.alert.title = title
+      this.alert.text = text
+      this.alert.visible = true
+    },
+
+    showNoAccountAlert() {
+      this.showAlert(
+        'How to get an account?',
+        "New user accounts will be provided by your organization's software administrators. Please consult them if you need an account."
+      )
     }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>

@@ -11,7 +11,7 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
-        <q-toolbar-title> OneWork - <b> Dashboard</b> </q-toolbar-title>
+        <q-toolbar-title> OneWork &middot; <b>Employees</b> </q-toolbar-title>
 
         <div>
           <q-icon name="person" size="large"></q-icon>
@@ -38,7 +38,9 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container
+      class="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"
+    >
       <router-view />
     </q-page-container>
   </q-layout>
