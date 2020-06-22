@@ -1,55 +1,43 @@
 <template>
-  <q-card class="q-ma-md">
-    <q-card-section horizontal>
-      <q-card-section>
-        <div class="text-h6">Employees</div>
-      </q-card-section>
-      <q-card-section>
-        <q-btn round color="primary">
-          <q-icon name="add" size="xs" />
-        </q-btn>
-      </q-card-section>
-    </q-card-section>
-    <q-separator />
-    <q-card-section>
-      <q-list>
-        <div v-for="(item, index) in data" :key="item.name">
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <c-avatar :firstName="item.firstName" :lastName="item.lastName" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label
-                >{{ item.firstName }} {{ item.lastName }}
-                {{ item.street }}</q-item-label
+  <div class="q-mt-sm">
+    <q-list>
+      <div v-for="(item, index) in data" :key="item.name">
+        <q-item clickable v-ripple>
+          <q-item-section avatar>
+            <c-avatar :firstName="item.firstName" :lastName="item.lastName" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label
+              >{{ item.firstName }} {{ item.lastName }}
+              {{ item.street }}</q-item-label
+            >
+            <q-item-label
+              >{{ item.zip }} {{ item.city }} {{ item.country }}</q-item-label
+            >
+            <q-item-label>{{ item.email }}</q-item-label>
+          </q-item-section>
+          <q-item-section side>
+            <div class="row">
+              <q-btn flat round color="primary" icon="edit" size="md">
+                <q-tooltip>Edit employee</q-tooltip>
+              </q-btn>
+              <q-btn
+                title="Delete employee"
+                flat
+                round
+                color="primary"
+                icon="delete"
+                size="md"
               >
-              <q-item-label
-                >{{ item.zip }} {{ item.city }} {{ item.country }}</q-item-label
-              >
-              <q-item-label>{{ item.email }}</q-item-label>
-            </q-item-section>
-            <q-item-section side>
-              <div class="row">
-                <q-btn flat round color="primary" icon="edit" size="md">
-                  <q-tooltip>Edit employee</q-tooltip>
-                </q-btn>
-                <q-btn
-                  title="Delete employee"
-                  flat
-                  round
-                  color="primary"
-                  icon="delete"
-                  size="md"
-                >
-                  <q-tooltip>Delete employee</q-tooltip>
-                </q-btn>
-              </div>
-            </q-item-section>
-          </q-item>
-          <q-separator spaced inset="item" v-if="index < data.length - 1" />
-        </div>
-      </q-list>
-      <!--
+                <q-tooltip>Delete employee</q-tooltip>
+              </q-btn>
+            </div>
+          </q-item-section>
+        </q-item>
+        <q-separator spaced inset="item" v-if="index < data.length - 1" />
+      </div>
+    </q-list>
+    <!--
     <q-table
       title="Employees"
       dense
@@ -58,24 +46,22 @@
       row-key="name"
     />
     -->
-    </q-card-section>
     <q-separator />
-    <q-card-section class="q-pa-sm vertical-middle" horizontal>
-      <q-card-section horizontal>
-        <q-pagination
-          v-model="currentPageNo"
-          color="primary"
-          :max="10"
-          :max-pages="6"
-          :boundary-numbers="true"
-        />
-      </q-card-section>
+    <div class="q-pa-md">
+      <q-pagination
+        v-model="currentPageNo"
+        color="primary"
+        :max="10"
+        :max-pages="6"
+        :boundary-numbers="true"
+        class="float-left"
+      />
       <q-space />
-      <q-card-section horizontal>
+      <div class="float-right">
         26-50 of 1.245
-      </q-card-section>
-    </q-card-section>
-  </q-card>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

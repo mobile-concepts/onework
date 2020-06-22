@@ -5,7 +5,7 @@
         <q-icon name="people_alt" size="md" />
         <q-toolbar-title>
           OneWork &middot;
-          <b>Sign in</b>
+          <b>Welcome</b>
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -13,7 +13,7 @@
     <q-page-container>
       <q-page padding>
         <div class="scrollpane">
-          <q-card class="main-card">
+          <div class="main-card">
             <q-tabs
               v-model="activeTab"
               dense
@@ -39,14 +39,18 @@
                   </template>
                   Welcome to OneWork. Please enter your credentials to log in.
                 </q-banner>
-                <q-input outlined v-model="login.username" label="Username*" />
+                <q-input
+                  xxxoutlined
+                  v-model="login.username"
+                  label="Username*"
+                />
                 <div class="text-right">
                   <a class="text-primary link" @click="showNoAccountAlert()">
                     No account yet?
                   </a>
                 </div>
                 <q-input
-                  outlined
+                  xxxoutlined
                   v-model="login.organization"
                   label="Organization*"
                 />
@@ -60,7 +64,7 @@
                 </div>
                 <q-input
                   type="password"
-                  outlined
+                  xxxoutlined
                   v-model="password"
                   label="Password*"
                 />
@@ -90,9 +94,9 @@
                   If forgotten your password then reset it by following the
                   instructions that will be sent to you by email.
                 </q-banner>
-                <q-input outlined v-model="username" label="Username*" />
+                <q-input xxxoutlined v-model="username" label="Username*" />
                 <q-input
-                  outlined
+                  xxxoutlined
                   v-model="organization"
                   label="Organization*"
                 />
@@ -119,35 +123,35 @@
                 </q-banner>
                 <div class="text-h7">Organization</div>
                 <q-input
-                  outlined
+                  xxxoutlined
                   v-model="register.organization.id"
                   label="ID*"
                 />
                 <q-input
-                  outlined
+                  xxxoutlined
                   v-model="register.organization.name"
                   label="Organization name*"
                 />
                 <q-input
-                  outlined
+                  xxxoutlined
                   v-model="register.organization.street"
                   label="Street*"
                 />
                 <div class="row">
                   <q-input
-                    outlined
+                    xxxoutlined
                     v-model="register.zip"
                     label="Zip*"
                     class="q-mr"
                   />
                   <q-input
-                    outlined
+                    xxxoutlined
                     v-model="register.organization.city"
                     label="City*"
                   />
                 </div>
                 <q-select
-                  outlined
+                  xxxoutlined
                   v-model="register.organization.country"
                   :options="availableCountries"
                   label="Country*"
@@ -155,32 +159,32 @@
 
                 <div class="text-h7">Admin user</div>
                 <q-input
-                  outlined
+                  xxxoutlined
                   v-model="register.adminUser.username"
                   label="Username*"
                 />
                 <q-input
-                  outlined
+                  xxxoutlined
                   v-model="register.adminUser.firstName"
                   label="First name*"
                 />
                 <q-input
-                  outlined
+                  xxxoutlined
                   v-model="register.adminUser.lastName"
                   label="Last name*"
                 />
                 <q-input
-                  outlined
+                  xxxoutlined
                   v-model="register.adminUser.lastName"
                   label="E-mail*"
                 />
                 <q-input
-                  outlined
+                  xxxoutlined
                   v-model="register.adminUser.password"
                   label="Password*"
                 />
                 <q-input
-                  outlined
+                  xxxoutlined
                   v-model="register.adminUser.password2"
                   label="Repeat password*"
                 />
@@ -197,7 +201,7 @@
                 </div>
               </q-tab-panel>
             </q-tab-panels>
-          </q-card>
+          </div>
         </div>
 
         <q-dialog v-model="alert.visible">
@@ -223,9 +227,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-export default new Vue({
-  name: 'PageAuth',
-
+export default Vue.extend({
   data() {
     return {
       activeTab: 'login',
