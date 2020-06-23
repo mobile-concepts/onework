@@ -76,7 +76,7 @@
                     Forgotten your password?
                   </a>
                 </div>
-                <q-checkbox v-model="login.remember">
+                <q-checkbox v-model="login.rememberLogin">
                   Remember login
                 </q-checkbox>
                 <div class="row">
@@ -94,10 +94,10 @@
                   If forgotten your password then reset it by following the
                   instructions that will be sent to you by email.
                 </q-banner>
-                <q-input xxxoutlined v-model="username" label="Username*" />
+                <q-input xxxoutlined v-model="forgotPassword.username" label="Username*" />
                 <q-input
                   xxxoutlined
-                  v-model="organization"
+                  v-model="forgotPassword.organizationId"
                   label="Organization*"
                 />
                 <div class="row">
@@ -129,7 +129,7 @@
                 <q-input
                   xxxoutlined
                   v-model="register.organization.id"
-                  label="ID*"
+                  label="ID* (only lower case characters, hyphens and numbers)"
                 />
                 <q-input
                   xxxoutlined
@@ -138,22 +138,37 @@
                 />
                 <q-input
                   xxxoutlined
-                  v-model="register.organization.street"
-                  label="Street*"
+                  v-model="register.organization.addressLine1"
+                  label="Address line 1*"
+                />
+                <q-input
+                  xxxoutlined
+                  v-model="register.organization.addressLine2"
+                  label="Address line 2*"
                 />
                 <div class="row">
+                  <div class="col col-4">
                   <q-input
                     xxxoutlined
-                    v-model="register.zip"
-                    label="Zip*"
-                    class="q-mr"
+                    v-model="register.postcode"
+                    label="Post/Zip code*"
+                    class="q-mr-md"
                   />
-                  <q-input
-                    xxxoutlined
-                    v-model="register.organization.city"
-                    label="City*"
-                  />
+                  </div>
+                  <div class="col col-8">
+                    <q-input
+                      xxxoutlined
+                      v-model="register.organization.city"
+                      label="City*"
+                      class="q-ml-md"
+                    />
+                  </div>
                 </div>
+                  <q-input
+                    xxxoutlined
+                    v-model="register.organization.region"
+                    label="State/Region/Province"
+                  />
                 <q-select
                   xxxoutlined
                   v-model="register.organization.country"
@@ -171,31 +186,46 @@
                   v-model="register.adminUser.username"
                   label="Username*"
                 />
+                <div class="row">
+
+                  <q-input
+                    xxxoutlined
+                    v-model="register.adminUser.firstName"
+                    label="First name*"
+                    class="col-6 q-pr-md"
+                  />
+                  <q-input
+                    xxxoutlined
+                    v-model="register.adminUser.lastName"
+                    label="Last name*"
+                    class="col-6 q-pl-md"
+                  />
+                </div>
                 <q-input
                   xxxoutlined
-                  v-model="register.adminUser.firstName"
-                  label="First name*"
-                />
-                <q-input
-                  xxxoutlined
-                  v-model="register.adminUser.lastName"
-                  label="Last name*"
-                />
-                <q-input
-                  xxxoutlined
-                  v-model="register.adminUser.lastName"
+                  v-model="register.adminUser.email"
                   label="E-mail*"
                 />
-                <q-input
-                  xxxoutlined
-                  v-model="register.adminUser.password"
-                  label="Password*"
-                />
-                <q-input
-                  xxxoutlined
-                  v-model="register.adminUser.password2"
-                  label="Repeat password*"
-                />
+                <div class="row">
+                  <div class="col-6">
+                    <q-input
+                      type="password"
+                      xxxoutlined
+                      v-model="register.adminUser.password"
+                      label="Password*"
+                      class="q-mr-md"
+                    />
+                  </div>
+                  <div class="col-6">
+                    <q-input
+                      type="password"
+                      xxxoutlined
+                      v-model="register.adminUser.password2"
+                      label="Repeat password*"
+                      class="q-ml-md"
+                    />
+                  </div>
+                </div>
                 <q-checkbox
                   v-model="register.termsAndConditions.accept"
                   class="q-my-lg"
@@ -249,17 +279,23 @@ export default Vue.extend({
       },
       login: {
         username: '',
-        organiazation: '',
+        organizationId: '',
         password: '',
-        remember: false
+        rememberLogin: false
+      },
+      forgotPassword: {
+        username: '',
+        organizationId: ''
       },
       register: {
         organization: {
           id: '',
           name: '',
-          street: '',
-          zip: '',
+          addressLine1: '',
+          addressLine2: '',
+          postcode: '',
           city: '',
+          region: '',
           country: ''
         },
         adminUser: {
@@ -273,9 +309,6 @@ export default Vue.extend({
         termsAndConditions: {
           accept: false
         }
-      },
-      forgotPassword: {
-        username: ''
       },
       availableCountries: [
         { label: 'United States', value: 'US' },
@@ -299,7 +332,7 @@ export default Vue.extend({
     showNoAccountAlert() {
       this.showAlert(
         'How to get an account?',
-        "New user accounts will be provided by your organization's software administrators. Please consult them if you need an account."
+        "New user accounts will be provided by your organization's software administrators. Please consult them, if you need an account."
       )
     }
   }
