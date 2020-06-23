@@ -31,9 +31,9 @@
             <q-separator />
 
             <q-tab-panels v-model="activeTab" animated>
-              <q-tab-panel name="login" class="q-gutter-md q-px-xs q-py-md">
+              <q-tab-panel name="login" class="q-gutter-sm q-px-xs q-py-md">
                 <div class="text-h6">Login user</div>
-                <q-banner class="bg-grey-3">
+                <q-banner class="bg-grey-3 q-mt-xs">
                   <template v-slot:avatar>
                     <q-icon name="account_circle" color="primary" />
                   </template>
@@ -85,7 +85,7 @@
                 class="q-gutter-sm q-px-xs q-py-md"
               >
                 <div class="text-h6">Forgot password</div>
-                <q-banner class="bg-grey-3 vertical-middle">
+                <q-banner class="bg-grey-3 q-mt-xs">
                   <template v-slot:avatar>
                     <q-icon
                       name="lock_open"
@@ -93,8 +93,8 @@
                       class="vertical-middle"
                     />
                   </template>
-                  If forgotten your password then reset it by following the
-                  instructions that will be sent to you by email.
+                  If forgotten your password then reset it by the instructions
+                  that will be sent to you by email.
                 </q-banner>
                 <q-input
                   outlined
@@ -114,7 +114,7 @@
 
               <q-tab-panel name="register" class="q-gutter-sm q-px-xs q-py-md">
                 <div class="text-h6">Register organization</div>
-                <q-banner class="bg-grey-3">
+                <q-banner class="bg-grey-3 q-mt-xs">
                   <template v-slot:avatar>
                     <q-icon name="domain" color="primary" />
                   </template>
@@ -157,7 +157,7 @@
                     <q-input
                       outlined
                       v-model="register.postcode"
-                      label="Post/Zip code*"
+                      label="Post code*"
                       class="q-mr-xs"
                     />
                   </div>
@@ -209,7 +209,7 @@
                 <q-input
                   outlined
                   v-model="register.adminUser.email"
-                  label="E-mail*"
+                  label="Email*"
                 />
                 <q-input
                   type="password"
