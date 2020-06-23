@@ -4,12 +4,10 @@ const routes: RouteConfig[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/Index.vue') },
-      { path: 'employees', component: () => import('pages/EmployeesPage.vue') }
-    ]
+    children: [{ path: '', component: () => import('pages/Index.vue') }]
   },
-  { path: '/auth', component: () => import('pages/PageAuth.vue') }
+  { path: '/auth', component: () => import('pages/AuthPage.vue') },
+  { path: '/employees', component: () => import('pages/EmployeesPage.vue') }
 ]
 
 // Always leave this as last one

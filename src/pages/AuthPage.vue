@@ -117,11 +117,15 @@
                   <a
                     @click.prevent="setActiveTab('login')"
                     class="text-primary link"
-                  >
-                    Login Page
-                  </a>
+                    >Login Page</a
+                  >.
                 </q-banner>
-                <div class="text-h7">Organization</div>
+                <q-space />
+                <div
+                  class="text-caption bg-grey-4 text-black q-px-sm q-py-xs rounded-borders"
+                >
+                  Organization
+                </div>
                 <q-input
                   xxxoutlined
                   v-model="register.organization.id"
@@ -156,8 +160,12 @@
                   :options="availableCountries"
                   label="Country*"
                 />
-
-                <div class="text-h7">Admin user</div>
+                <q-space />
+                <div
+                  class="text-caption bg-grey-4 text-black q-px-sm q-py-xs rounded-borders"
+                >
+                  Admin user
+                </div>
                 <q-input
                   xxxoutlined
                   v-model="register.adminUser.username"
@@ -188,7 +196,10 @@
                   v-model="register.adminUser.password2"
                   label="Repeat password*"
                 />
-                <q-checkbox v-model="register.termsAndConditions.accept">
+                <q-checkbox
+                  v-model="register.termsAndConditions.accept"
+                  class="q-my-lg"
+                >
                   Accept
                   <a @click.stop="void 0" class="text-primary link"
                     >Terms and Conditions</a

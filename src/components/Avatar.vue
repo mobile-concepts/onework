@@ -36,12 +36,12 @@ export default Vue.component('c-avatar', {
 
   computed: {
     avatarLetter() {
-      return this.firstName?.charAt(0)?.toUpperCase() || 'X'
+      return this.lastName?.charAt(0)?.toUpperCase() || 'X'
     },
 
     color() {
       const charCode =
-        this.firstName
+        this.lastName
           ?.charAt(0)
           ?.toUpperCase()
           ?.charCodeAt(0) || 0
