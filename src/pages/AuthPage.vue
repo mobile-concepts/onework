@@ -39,12 +39,8 @@
                   </template>
                   Welcome to OneWork. Please enter your credentials to log in.
                 </q-banner>
-                <q-input
-                  outlined
-                  v-model="login.username"
-                  label="Username*"
-                />
-                <div class="text-right">
+                <q-input outlined v-model="login.username" label="Username*" />
+                <div class="text-right q-mt-xs">
                   <a class="text-primary link" @click="showNoAccountAlert()">
                     No account yet?
                   </a>
@@ -54,7 +50,7 @@
                   v-model="login.organization"
                   label="Organization*"
                 />
-                <div class="text-right">
+                <div class="text-right q-mt-xs">
                   <a
                     class="text-primary link"
                     @click="setActiveTab('register')"
@@ -68,7 +64,7 @@
                   v-model="password"
                   label="Password*"
                 />
-                <div class="text-right">
+                <div class="text-right q-mt-xs">
                   <a
                     class="text-primary link float-right"
                     @click="setActiveTab('forgotPassword')"
@@ -79,22 +75,32 @@
                 <q-checkbox v-model="login.rememberLogin">
                   Remember login
                 </q-checkbox>
-                <div class="row">
-                  <q-space />
-                  <q-btn color="primary" label="Log in" />
+                <div class="text-right q-ma-none">
+                  <q-btn color="primary" label="Log in" xclass="float-right" />
                 </div>
               </q-tab-panel>
 
-              <q-tab-panel name="forgotPassword" class="q-gutter-sm q-px-xs q-py-md">
+              <q-tab-panel
+                name="forgotPassword"
+                class="q-gutter-sm q-px-xs q-py-md"
+              >
                 <div class="text-h6">Forgot password</div>
-                <q-banner class="bg-grey-3">
+                <q-banner class="bg-grey-3 vertical-middle">
                   <template v-slot:avatar>
-                    <q-icon name="lock_open" color="primary" />
+                    <q-icon
+                      name="lock_open"
+                      color="primary"
+                      class="vertical-middle"
+                    />
                   </template>
                   If forgotten your password then reset it by following the
                   instructions that will be sent to you by email.
                 </q-banner>
-                <q-input outlined v-model="forgotPassword.username" label="Username*" />
+                <q-input
+                  outlined
+                  v-model="forgotPassword.username"
+                  label="Username*"
+                />
                 <q-input
                   outlined
                   v-model="forgotPassword.organizationId"
@@ -129,7 +135,7 @@
                 <q-input
                   outlined
                   v-model="register.organization.id"
-                  label="ID* (only lowercase characters, hyphen and numbers)"
+                  label="Organziation ID*"
                 />
                 <q-input
                   outlined
@@ -148,12 +154,12 @@
                 />
                 <div class="row">
                   <div class="col col-5">
-                  <q-input
-                    outlined
-                    v-model="register.postcode"
-                    label="Post/Zip code*"
-                    class="q-mr-xs"
-                  />
+                    <q-input
+                      outlined
+                      v-model="register.postcode"
+                      label="Post/Zip code*"
+                      class="q-mr-xs"
+                    />
                   </div>
                   <div class="col col-7">
                     <q-input
@@ -164,11 +170,11 @@
                     />
                   </div>
                 </div>
-                  <q-input
-                    outlined
-                    v-model="register.organization.region"
-                    label="State/Region/Province"
-                  />
+                <q-input
+                  outlined
+                  v-model="register.organization.region"
+                  label="State/Region/Province"
+                />
                 <q-select
                   outlined
                   v-model="register.organization.country"
@@ -187,7 +193,6 @@
                   label="Username*"
                 />
                 <div class="row">
-
                   <q-input
                     outlined
                     v-model="register.adminUser.firstName"
@@ -206,26 +211,18 @@
                   v-model="register.adminUser.email"
                   label="E-mail*"
                 />
-                <div class="row">
-                  <div class="col-6">
-                    <q-input
-                      type="password"
-                      outlined
-                      v-model="register.adminUser.password"
-                      label="Password*"
-                      class="q-mr-xs"
-                    />
-                  </div>
-                  <div class="col-6">
-                    <q-input
-                      type="password"
-                      outlined
-                      v-model="register.adminUser.password2"
-                      label="Repeat password*"
-                      class="q-ml-xs"
-                    />
-                  </div>
-                </div>
+                <q-input
+                  type="password"
+                  outlined
+                  v-model="register.adminUser.password"
+                  label="Password*"
+                />
+                <q-input
+                  type="password"
+                  outlined
+                  v-model="register.adminUser.password2"
+                  label="Repeat password*"
+                />
                 <q-checkbox
                   v-model="register.termsAndConditions.accept"
                   class="q-my-lg"
@@ -236,8 +233,7 @@
                   >
                 </q-checkbox>
 
-                <div class="row">
-                  <q-space />
+                <div class="text-right q-ma-none">
                   <q-btn color="primary" label="Register and log in" />
                 </div>
               </q-tab-panel>
