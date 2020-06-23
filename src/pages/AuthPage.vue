@@ -31,7 +31,7 @@
             <q-separator />
 
             <q-tab-panels v-model="activeTab" animated>
-              <q-tab-panel name="login" class="q-gutter-sm">
+              <q-tab-panel name="login" class="q-gutter-md q-px-xs q-py-md">
                 <div class="text-h6">Login user</div>
                 <q-banner class="bg-grey-3">
                   <template v-slot:avatar>
@@ -40,7 +40,7 @@
                   Welcome to OneWork. Please enter your credentials to log in.
                 </q-banner>
                 <q-input
-                  xxxoutlined
+                  outlined
                   v-model="login.username"
                   label="Username*"
                 />
@@ -50,7 +50,7 @@
                   </a>
                 </div>
                 <q-input
-                  xxxoutlined
+                  outlined
                   v-model="login.organization"
                   label="Organization*"
                 />
@@ -59,12 +59,12 @@
                     class="text-primary link"
                     @click="setActiveTab('register')"
                   >
-                    Not yet registered?
+                    Organzation not registered?
                   </a>
                 </div>
                 <q-input
                   type="password"
-                  xxxoutlined
+                  outlined
                   v-model="password"
                   label="Password*"
                 />
@@ -85,7 +85,7 @@
                 </div>
               </q-tab-panel>
 
-              <q-tab-panel name="forgotPassword" class="q-gutter-sm">
+              <q-tab-panel name="forgotPassword" class="q-gutter-sm q-px-xs q-py-md">
                 <div class="text-h6">Forgot password</div>
                 <q-banner class="bg-grey-3">
                   <template v-slot:avatar>
@@ -94,9 +94,9 @@
                   If forgotten your password then reset it by following the
                   instructions that will be sent to you by email.
                 </q-banner>
-                <q-input xxxoutlined v-model="forgotPassword.username" label="Username*" />
+                <q-input outlined v-model="forgotPassword.username" label="Username*" />
                 <q-input
-                  xxxoutlined
+                  outlined
                   v-model="forgotPassword.organizationId"
                   label="Organization*"
                 />
@@ -106,7 +106,7 @@
                 </div>
               </q-tab-panel>
 
-              <q-tab-panel name="register" class="q-gutter-sm">
+              <q-tab-panel name="register" class="q-gutter-sm q-px-xs q-py-md">
                 <div class="text-h6">Register organization</div>
                 <q-banner class="bg-grey-3">
                   <template v-slot:avatar>
@@ -127,50 +127,50 @@
                   Organization
                 </div>
                 <q-input
-                  xxxoutlined
+                  outlined
                   v-model="register.organization.id"
-                  label="ID* (only lower case characters, hyphens and numbers)"
+                  label="ID* (only lowercase characters, hyphen and numbers)"
                 />
                 <q-input
-                  xxxoutlined
+                  outlined
                   v-model="register.organization.name"
                   label="Organization name*"
                 />
                 <q-input
-                  xxxoutlined
+                  outlined
                   v-model="register.organization.addressLine1"
                   label="Address line 1*"
                 />
                 <q-input
-                  xxxoutlined
+                  outlined
                   v-model="register.organization.addressLine2"
                   label="Address line 2*"
                 />
                 <div class="row">
-                  <div class="col col-4">
+                  <div class="col col-5">
                   <q-input
-                    xxxoutlined
+                    outlined
                     v-model="register.postcode"
                     label="Post/Zip code*"
-                    class="q-mr-md"
+                    class="q-mr-xs"
                   />
                   </div>
-                  <div class="col col-8">
+                  <div class="col col-7">
                     <q-input
-                      xxxoutlined
+                      outlined
                       v-model="register.organization.city"
                       label="City*"
-                      class="q-ml-md"
+                      class="q-ml-xs"
                     />
                   </div>
                 </div>
                   <q-input
-                    xxxoutlined
+                    outlined
                     v-model="register.organization.region"
                     label="State/Region/Province"
                   />
                 <q-select
-                  xxxoutlined
+                  outlined
                   v-model="register.organization.country"
                   :options="availableCountries"
                   label="Country*"
@@ -182,27 +182,27 @@
                   Admin user
                 </div>
                 <q-input
-                  xxxoutlined
+                  outlined
                   v-model="register.adminUser.username"
                   label="Username*"
                 />
                 <div class="row">
 
                   <q-input
-                    xxxoutlined
+                    outlined
                     v-model="register.adminUser.firstName"
                     label="First name*"
-                    class="col-6 q-pr-md"
+                    class="col-6 q-pr-xs"
                   />
                   <q-input
-                    xxxoutlined
+                    outlined
                     v-model="register.adminUser.lastName"
                     label="Last name*"
-                    class="col-6 q-pl-md"
+                    class="col-6 q-pl-xs"
                   />
                 </div>
                 <q-input
-                  xxxoutlined
+                  outlined
                   v-model="register.adminUser.email"
                   label="E-mail*"
                 />
@@ -210,19 +210,19 @@
                   <div class="col-6">
                     <q-input
                       type="password"
-                      xxxoutlined
+                      outlined
                       v-model="register.adminUser.password"
                       label="Password*"
-                      class="q-mr-md"
+                      class="q-mr-xs"
                     />
                   </div>
                   <div class="col-6">
                     <q-input
                       type="password"
-                      xxxoutlined
+                      outlined
                       v-model="register.adminUser.password2"
                       label="Repeat password*"
-                      class="q-ml-md"
+                      class="q-ml-xs"
                     />
                   </div>
                 </div>

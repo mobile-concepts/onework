@@ -47,7 +47,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import EssentialLink from 'components/EssentialLink'
+import EssentialLink from '../components/EssentialLink.vue'
 
 export default Vue.component('c-page-layout', {
   components: {
